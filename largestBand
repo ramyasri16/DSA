@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+int largestBand(vector<int> arr){
+    int n = arr.size();
+    unordered_set<int> s;
+    
+    //data in set
+    for(int x : arr){
+        s.insert(x);
+    }
+    //iterate over the array
+    int largest_len = 1;
+    
+    for(auto element : s){
+        int parent = element - 1;
+        
+        if(s.find(parent) == s.end()){
+            //find entire band
+            int next_no = element+1;
+            int cnt = 1;
+            while(s.find(next_no) != s.end()){
+                next_no++;
+                cnt++;
+            }
+            if(cnt>largest_len){
+                largest_len = cnt;
+            }
+        }
+    }
+    return largest_len;
+}
+
+int main() {
+    vector<int> arr{1,9,3,0,18,5,2,4,10,7,12,6};
+    cout<< largestBand(arr);
+    return 0;
+}
