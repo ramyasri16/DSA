@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    string s;
+    //no of inputs=5
+    int n=5;
+    //storing string in sarr
+    vector<string> sarr;
+    //storing string variable in temp
+    string temp;
+    while(n--){
+        getline(cin,temp);
+        sarr.push_back(temp);
+    }
+    for(string x : sarr){
+        cout<<x<<","<<endl;
+    }
+    
+}
